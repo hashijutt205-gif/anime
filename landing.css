@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: white;
+}
+
+/* ---------- NAVBAR ---------- */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.35); /* MUST be transparent */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  z-index: 999;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.search {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #222;
+  color: white;
+  transition: 0.3s;
+}
+
+.search:hover {
+  background: #333;
+  transform: scale(1.05);
+}
+
+.signup-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #ff5f1f;
+  color: white;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background: #ff7b47;
+  transform: translateY(-2px);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  height: 100vh;
+  background: url("gokublack2.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 550px;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.hero p {
+  margin-top: 15px;
+  color: #ff7b47;
+}
+
+/* ---------- BUTTONS ---------- */
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.btn.primary {
+  background: #ff5f1f;
+  color: white;
+  text-decoration: none;
+}
+
+.btn.primary:hover {
+  background: #ff7b47;
+  box-shadow: 0 0 20px #ff5f1f;
+  transform: scale(1.05);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  text-decoration: none;
+}
+
+.btn.secondary::after {
+  content: " →";
+  transition: 0.3s;
+}
+
+.btn.secondary:hover {
+  background: white;
+  color: black;
+  transform: scale(1.05);
+}
+
+.btn.secondary:hover::after {
+  margin-left: 6px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  nav {
+    padding: 14px 20px;
+  }
+
+  .hero {
+    padding: 0 25px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}

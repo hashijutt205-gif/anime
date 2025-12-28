@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime World Search</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: #0d2c4b;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .search-section {
+      text-align: center;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .search-bar {
+      display: inline-flex;
+      align-items: center;
+      background: #142b47;
+      border-radius: 50px;
+      padding: 10px 25px;
+      width: 60%;
+      max-width: 600px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      transition: 0.3s ease;
+    }
+
+    .search-bar:focus-within {
+      box-shadow: 0 0 20px #ff004f;
+      transform: scale(1.02);
+    }
+
+    .search-bar input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px;
+    }
+
+    .search-bar button {
+      background: #ff004f;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-bar button:hover {
+      background: #ff3366;
+      transform: scale(1.1);
+    }
+
+    /* Search History Dropdown */
+    .search-history {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      max-width: 600px;
+      background: rgba(20, 43, 71, 0.97);
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      display: none;
+      flex-direction: column;
+      padding: 10px;
+      z-index: 100;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid #1f3a5f;
+    }
+
+    .history-header button {
+      background: none;
+      border: none;
+      color: #ff004f;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .history-list {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid #1f3a5f;
+      transition: background 0.3s;
+    }
+
+    .history-item:hover {
+      background: #1b3152;
+    }
+
+    .history-item span {
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .history-item span:hover {
+      color: #ff004f;
+    }
+
+    .history-item button {
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .history-item button:hover {
+      color: #ff004f;
+    }
+
+    .open-history {
+      display: inline-block;
+      margin-top: 25px;
+      background: #142b47;
+      color: #fff;
+      border: 1px solid #ff004f;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .open-history:hover {
+      background: #ff004f;
+      color: #fff;
+    }
+
+    /* Scrollbar */
+    .history-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .history-list::-webkit-scrollbar-thumb {
+      background-color: #ff004f;
+      border-radius: 5px;
+    }
+
+    /* Subtle confirmation */
+    .confirm {
+      display: none;
+      font-size: 14px;
+      color: #0f0;
+      margin-top: 8px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .confirm.show {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="search-section">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search any anime, e.g., One Piece...">
+      <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="confirm" id="confirmMsg">Search added!</div>
+
+    <div class="search-history" id="searchHistory">
+      <div class="history-header">
+        <h4>Search History</h4>
+        <button id="clearAllBtn">Clear All</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+    </div>
+
+    <button class="open-history" id="openHistoryTab">Open Full History</button>
+  </section>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchHistory = document.getElementById('searchHistory');
+    const historyList = document.getElementById('historyList');
+    const clearAllBtn = document.getElementById('clearAllBtn');
+    const openHistoryTab = document.getElementById('openHistoryTab');
+    const confirmMsg = document.getElementById('confirmMsg');
+
+    let history = JSON.parse(localStorage.getItem('animeSearchHistory')) || [];
+
+    function renderHistory() {
+      historyList.innerHTML = '';
+      if (history.length === 0) {
+        historyList.innerHTML = `<p style="text-align:center;color:#aaa;">No search history yet</p>`;
+        return;
+      }
+      history.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.classList.add('history-item');
+        div.innerHTML = `
+          <span onclick="useHistory('${item}')">${item}</span>
+          <button onclick="deleteHistory(${index})"><i class="fas fa-times"></i></button>
+        `;
+        historyList.appendChild(div);
+      });
+    }
+
+    function saveHistory() {
+      localStorage.setItem('animeSearchHistory', JSON.stringify(history));
+      renderHistory();
+    }
+
+    function addHistory(query) {
+      if (query && !history.includes(query)) {
+        history.unshift(query);
+        if (history.length > 10) history.pop();
+        saveHistory();
+        showConfirm();
+      }
+    }
+
+    function deleteHistory(index) {
+      history.splice(index, 1);
+      saveHistory();
+    }
+
+    function clearAll() {
+      history = [];
+      saveHistory();
+    }
+
+    function useHistory(item) {
+      searchInput.value = item;
+      searchHistory.style.display = 'none';
+      // you can trigger real search function here
+    }
+
+    function showConfirm() {
+      confirmMsg.classList.add('show');
+      setTimeout(() => {
+        confirmMsg.classList.remove('show');
+      }, 1000);
+    }
+
+    searchInput.addEventListener('focus', () => {
+      searchHistory.style.display = 'flex';
+      renderHistory();
+    });
+
+    searchInput.addEventListener('blur', () => {
+      setTimeout(() => searchHistory.style.display = 'none', 200);
+    });
+
+    searchBtn.addEventListener('click', () => {
+      const query = searchInput.value.trim();
+      if (query) {
+        addHistory(query);
+        searchInput.value = '';
+      }
+    });
+
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          addHistory(query);
+          searchInput.value = '';
+        }
+      }
+    });
+
+    clearAllBtn.addEventListener('click', clearAll);
+
+    openHistoryTab.addEventListener('click', () => {
+      window.location.href = 'history.html'; // Assuming you have a history.html page
+    });
+    renderHistory();
+  </script>
+
+</body>
+
+</html>

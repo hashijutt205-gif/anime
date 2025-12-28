@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookmarks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d2c4b;
+      color: white;
+      padding: 20px;
+    }
+    .anime-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .anime-card {
+      background: #1a3a5c;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+    }
+    .anime-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .remove-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e74c3c;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .top-nav {
+      margin-bottom: 20px;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-nav">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <h1>My Bookmarked Anime</h1>
+  </div>
+
+  <div class="anime-list" id="bookmarkContainer"></div>
+
+  <script>
+    function loadBookmarks() {
+      const container = document.getElementById('bookmarkContainer');
+      container.innerHTML = "";
+
+      const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+
+      if (bookmarks.length === 0) {
+        container.innerHTML = "<p>No bookmarks added yet.</p>";
+        return;
+      }
+
+      bookmarks.forEach((anime, index) => {
+        const card = document.createElement("div");
+        card.className = "anime-card";
+        card.innerHTML = `
+          <img src="${anime.img}" alt="${anime.title}">
+          <h4>${anime.title}</h4>
+          <button class="remove-btn" onclick="removeBookmark(${index})">Remove</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function removeBookmark(index) {
+      let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+      bookmarks.splice(index, 1);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+      loadBookmarks();
+    }
+
+    loadBookmarks();
+  </script>
+</body>
+</html>

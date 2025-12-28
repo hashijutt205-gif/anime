@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .popular{
+        position: absolute;
+        top: 100px;
+      }
+    </style>
+</head>
+<body>
+     <div class="container">
+            <div class="logo">
+                <img class="logo-img" src="goku logo.webp" alt="" srcset="">
+                <h1 class="logo-heading">Ani</h1>
+                <h1 class="logo-heading2">.World</h1>
+            </div>
+            <nav class="navbar" id="navbar">
+                <ul class="nav-list" id="navLinks">
+
+                    <li class="fas fa-home-lg" class="nav-items"><a href="index.html" onclick="showPage('home-page')"
+                            class="nav-link">Home</a></li>
+
+                    <li class="fas fa-fire-alt" class="nav-items"><a href="#" class="nav-link"
+                            onclick="showPage('popular-page')">Popular</a></li>
+
+                    <li class="fas fa-bookmark" class="nav-items"><a href="bookmark.html" class="nav-link">BookMark</a>
+                    </li>
+                    <div class="forms">
+                        <div class="login-form">
+                            <a href="#" onclick="showPage('login-page')" class="nav-login"> <i class="fas fa-user">
+                                    LogIn </i></a>
+                        </div>
+                    </div>
+
+                </ul>
+                <div class="hamburger " id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </nav>
+
+        </div>
+       
+   <div class="main-body popular">
+                    <div class="main-header">PoPular Anime</div>
+                    <div class="line"></div>
+
+                    <div class="cards">
+
+                        <div class="card-grid" id="anime-grid">
+
+                            <!-- card # 1 (Dragon Ball) -->
+
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Dragon Ball Z"
+                                data-img="dragonball.jpg">
+                                <a href="episode.html?anime=dragonballz">
+                                    <img src="dragonball.jpg" alt="Dragon Ball Z">
+                                    <div class="card-info">
+                                        <h3>Dragon Ball</h3>
+                                        <p class="genres">Shonen, Action, Fantasy</p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark   bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 2 (Narouto) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Naruto">
+                                <a href="">
+                                    <img src="narouto.jpg" alt="Naruto">
+                                    <div class="card-info">
+                                        <h3>Naruto</h3>
+                                        <p class="genres">Shonen, Action, Fantasy</p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 3 (Daily Life) -->
+                            <div class="anime-card" data-genres="shonen fantasy db"
+                                data-title="Daily Life Of Immortal King">
+                                <a href="">
+                                    <img src="eb06250e615b99858189970595184bd2.jpg" alt="Daily Life  of Immortal King">
+                                    <div class="card-info">
+                                        <h3>Daily Life Of Immortal King</h3>
+                                        <p class="genres">School Life, Action, Fantasy , Magic , Slice of Life</p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 4 (Wrong Way To Use  Healing Magic) -->
+                            <div class="anime-card" data-genres="shonen fantasy db"
+                                data-title="Wrong Way To Use  Healing Magic">
+                                <a href="">
+                                    <img src="healing magic.jpg" alt="Wrong Way To Use  Healing Magic">
+                                    <div class="card-info">
+                                        <h3>Wrong Way To Use Healing Magic</h3>
+                                        <p class="genres">Isekai, Action, Fantasy , Magic , Super Power</p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 5 (From Common Place to World's Strongest) -->
+                            <div class="anime-card" data-genres="shonen fantasy db"
+                                data-title="From Common Place to World's Strongest">
+                                <a href="">
+                                    <img src="from common.jpg" alt="From Common Place to World's Strongest">
+                                    <div class="card-info">
+                                        <h3>From Common Place to World's Strongest</h3>
+                                        <p class="genres">Isekai , Action, Fantasy , Magic , Romance , Super Power</p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 6 (Demon Slayer) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Demon Slayer">
+                                <a href="">
+                                    <img src="demon slayer.jpg" alt="Demon Slayer">
+                                    <div class="card-info">
+                                        <h3>Demon Slayer</h3>
+                                        <p class="genres">Historical , Action, Fantasy , Magic , demons , Super Power
+                                        </p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 7 (Dandanadan) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Dananan">
+                                <a href="">
+                                    <img src="dandanan.jpg" alt="Dananan">
+                                    <div class="card-info">
+                                        <h3>Dandadan</h3>
+                                        <p class="genres">School Life , Action, Slice Of Life , Magic , Romance , Super
+                                            Power </p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 8 (Jujutsu) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Jujutsu Kaisen">
+                                <a href="">
+                                    <img src="jujutsu.jpg" alt="Jujutsu Kaisen">
+                                    <div class="card-info">
+                                        <h3>Jujutsu Kaisen</h3>
+                                        <p class="genres">School Life , Action, Slice Of Life , Magic , Monster , Super
+                                            Power </p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 9 (Spirit Chronical) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Jujutsu Kaisen">
+                                <a href="">
+                                    <img src="spirit.jpg" alt="Spirit Chronicles">
+                                    <div class="card-info">
+                                        <h3>Spirit Chronicles</h3>
+                                        <p class="genres">Isekai, Harem, Action, Adventure, Magic , Monster ,
+                                            Super Power </p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+                            <!-- card # 10 (Ice Blade) -->
+                            <div class="anime-card" data-genres="shonen fantasy db" data-title="Jujutsu Kaisen">
+                                <a href="">
+                                    <img src="ice blade.jpg" alt="Ice Blade Sorrcerer Shall Rule the World">
+                                    <div class="card-info">
+                                        <h3>Ice Blade Sorrcerer Shall Rule the World</h3>
+                                        <p class="genres"> School Life , Action, Slice Of Life , Magic , Monster , Super
+                                            Power </p>
+                                    </div>
+                                </a>
+                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
