@@ -4,314 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-
-    </style>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="landing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div id="home-page" class="page active">
-        <div class="container">
-            <div class="logo">
-                <img class="logo-img" src="goku logo.webp" alt="" srcset="" loading="lazy">
-                <h1 class="logo-heading">Ani</h1>
-                <h1 class="logo-heading2">.World</h1>
-            </div>
-            <nav class="navbar" id="navbar">
-                <ul class="nav-list" id="navLinks">
 
-                    <li class="fas fa-home-lg" class="nav-items"><a href="#" onclick="showPage('home-page')" class="nav-link">Home</a></li>
+   
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">AniWorld</div>
+  <div class="nav-right">
+    <input class="search" type="text" placeholder="Search">
+    <button class="signup-btn">Sign up</button>
+  </div>
+</nav>
 
-                    <li class="fas fa-fire-alt" class="nav-items"><a href="popular.html" class="nav-link" onclick="showPage('popular-page')">Popular</a></li>
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>The only anime platform you will ever need</h1>
+    <p>Dragon Ball Super Super Hero Movie →</p>
 
-                    <li class="fas fa-bookmark" class="nav-items"><a href="bookmark.html" class="nav-link">BookMark</a>
-                    </li>
-                    <div class="forms">
-                        <div class="login-form">
-                            <a href="#" onclick="showPage('login-page')" class="nav-login"> <i class="fas fa-user">
-                                    LogIn </i></a>
-                        </div>
-                    </div>
-
-                </ul>
-                <div class="hamburger " id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-
-            </nav>
-
-        </div>
-        <div class="container2 ">
-            <section class="search-section">
-                <div class="search-bar">
-                    <input type="text" id="anime-search" placeholder="Search any anime, e.g., Dragon Ball..." onkeyup="filterAnime()">
-                    <button><i class="fas fa-search"></i></button>
-                    <!-- search history -->
-
-
-                </div>
-
-                <div class="filter-dropdown">
-                    <select id="genre-filter" onchange="filterAnime()">
-                        <option value="all-genre">All Genres</option>
-                        <option value="all-anime">All Anime</option>
-                        <option value="action">Action</option>
-                        <option value="adventure">Adventure</option>
-                        <option value="comedy">Comedy</option>
-                        <option value="drama">Drama</option>
-                        <option value="monster">Monster</option>
-                        <option value="isekai">Isekai</option>
-                        <option value="fantasy">Fantasy</option>
-                        <option value="slice-of-life">Slice of Life</option>
-                        <option value="romance">Romance</option>
-                        <option value="sci-fi">Sci-Fi</option>
-                        <option value="mecha">Mecha</option>
-                        <option value="music">Music</option>
-                        <option value="mystery">Mystery</option>
-                        <option value="psychological">Psychological</option>
-                        <option value="sports">Sports</option>
-                        <option value="supernatural">Supernatural</option>
-                        <option value="horror">Horror</option>
-                        <option value="thriller">Thriller</option>
-                        <option value="magic">Magic</option>
-                        <option value="super-power">Super Power</option>
-                        <option value="military">Military</option>
-                        <option value="martial-arts">Martial Arts</option>
-                        <option value="samurai">Samurai</option>
-                        <option value="vampire">Vampire</option>
-                        <option value="isekai">Isekai</option>
-                        <option value="school">School</option>
-                        <option value="shonen">Shonen</option>
-                        <option value="shoujo">Shoujo</option>
-                        <option value="seinen">Seinen</option>
-                        <option value="josei">Josei</option>
-                        <option value="harem">Harem</option>
-                        <option value="reverse-harem">Reverse Harem</option>
-                        <option value="parody">Parody</option>
-                        <option value="game">Game</option>
-                        <option value="kids">Kids</option>
-                        <option value="demons">Demons</option>
-                        <option value="detective">Detective</option>
-                        <option value="historical">Historical</option>
-                        <option value="dementia">Dementia</option>
-                        <option value="tragedy">Tragedy</option>
-                        <option value="doujinshi">Doujinshi</option>
-
-                    </select>
-                </div>
-
-                <!-- Main Body -->
-                <div class="main-body">
-                    <!-- for image slider -->
-                    <!-- ===== Featured Anime Carousel ===== -->
-                    <section class="carousel-section">
-                        <h2 class="carousel-title">Featured Anime</h2>
-                        <div class="carousel-container">
-                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-
-                            <div class="carousel-track">
-                                <!-- Slide 1 -->
-                                <div class="carousel-item">
-                                    <img src="demon slayer.jpg" alt="Demon Slayer">
-                                    <div class="carousel-caption">
-                                        <h3>Demon Slayer</h3>
-                                        <p class="genre">Action • Fantasy • Demons</p>
-                                        <p class="desc">Tanjiro becomes a demon slayer to avenge his family and cure his sister Nezuko.</p>
-                                        <a href="#" class="watch-btn"><i class="fas fa-play"></i> Watch Now</a>
-                                    </div>
-                                </div>
-
-                                <!-- Slide 2 -->
-                                <div class="carousel-item">
-                                    <img src="dragonball.jpg" alt="Dragon Ball Z">
-                                    <div class="carousel-caption">
-                                        <h3>Dragon Ball Z</h3>
-                                        <p class="genre">Action • Comedy • Shonen</p>
-                                        <p class="desc">Goku and his friends defend Earth from powerful foes and unlock new transformations.</p>
-                                        <a href="#" class="watch-btn"><i class="fas fa-play"></i> Watch Now</a>
-                                    </div>
-                                </div>
-
-                                <!-- Slide 3 -->
-                                <div class="carousel-item">
-                                    <img src="jujutsu.jpg" alt="Jujutsu Kaisen">
-                                    <div class="carousel-caption">
-                                        <h3>Jujutsu Kaisen</h3>
-                                        <p class="genre">Action • Supernatural • Shonen</p>
-                                        <p class="desc">Yuji Itadori enters a world of cursed spirits after consuming a dangerous talisman.</p>
-                                        <a href="#" class="watch-btn"><i class="fas fa-play"></i> Watch Now</a>
-                                    </div>
-                                </div>
-
-                                <!-- Slide 4 -->
-                                <div class="carousel-item">
-                                    <img src="from common.jpg" alt="Arifureta">
-                                    <div class="carousel-caption">
-                                        <h3>Arifureta</h3>
-                                        <p class="genre">Action • Isekai • Fantasy</p>
-                                        <p class="desc">A high school student falls into a dungeon and must fight his way back to the surface.</p>
-                                        <a href="#" class="watch-btn"><i class="fas fa-play"></i> Watch Now</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-
-                        <div class="carousel-dots"></div>
-                    </section>
-                    <!-- for trending anime -->
-                    <div class="main-header">Trending Anime</div>
-                    <div class="line"></div>
-
-                    <div class="cards">
-                        <div class="card-grid" id="anime-grid">
-
-                            <!-- card # 1 (Dragon Ball) -->
-
-                            <div class="anime-card" data-genre="all-anime action comedy martial-arts shonen fantasy " data-title="Dragon Ball Z" data-img="dragonball.jpg">
-                                <a href="episode.html?anime=dragonballz">
-                                    <img src="dragonball.jpg" alt="Dragon Ball Z" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Dragon Ball</h3>
-                                        <p class="genres">Shonen Action Fantasy Comedy Martia-Arts</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark   bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 2 (Narouto) -->
-                            <div class="anime-card" data-genre="all-anime shonen action adventure comedy martial-arts" data-title="Naruto">
-                                <a href="">
-                                    <img src="narouto.jpg" alt="Naruto">
-                                    <div class="card-info">
-                                        <h3>Naruto</h3>
-                                        <p class="genres">Shonen Action Fantasy Comedy Martial-Arts</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 3 (Daily Life) -->
-                            <div class="anime-card" data-genre="all-anime adventure comedy demons fantasy school" data-title="Daily Life Of Immortal King">
-                                <a href="">
-                                    <img src="eb06250e615b99858189970595184bd2.jpg" alt="Daily Life  of Immortal King">
-                                    <div class="card-info">
-                                        <h3>Daily Life Of Immortal King</h3>
-                                        <p class="genres"> Action Fantasy Adventure Magic School </p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 4 (Wrong Way To Use  Healing Magic) -->
-                            <div class="anime-card" data-genre="all-anime action fantasy isekai magic comedy" data-title="Wrong Way To Use  Healing Magic">
-                                <a href="">
-                                    <img src="healing magic.jpg" alt="Wrong Way To Use  Healing Magic" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Wrong Way To Use Healing Magic</h3>
-                                        <p class="genres"> Action Fantasy Isekai Magic Comedy</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 5 (From Common Place to World's Strongest) -->
-                            <div class="anime-card" data-genre="all-anime action adventure fantasy isekai harem" data-title="From Common Place to World's Strongest">
-                                <a href="">
-                                    <img src="from common.jpg" alt="From Common Place to World's Strongest" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>From Common Place to World's Strongest</h3>
-                                        <p class="genres">Action Adventure Fantasy Isekai Harem</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 6 (Demon Slayer) -->
-                            <div class="anime-card" data-genre="all-anime action mystery fantasy historical demons" data-title="Demon Slayer">
-                                <a href="">
-                                    <img src="demon slayer.jpg" alt="Demon Slayer" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Demon Slayer</h3>
-                                        <p class="genres"> Action Mystery Fantasy Historical Demons
-                                        </p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 7 (Dandanadan) -->
-                            <div class="anime-card" data-genre="all-anime action comedy drama romance sci-fi" data-title="Dananan">
-                                <a href="">
-                                    <img src="dandanan.jpg" alt="Dananan" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Dandadan</h3>
-                                        <p class="genres">Action Comedy Drama Romance Sci-fi</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 8 (Jujutsu) -->
-                            <div class="anime-card" data-genre="all-anime shonen fantasy action adventure magic monster" data-title="Jujutsu Kaisen">
-                                <a href="">
-                                    <img src="jujutsu.jpg" alt="Jujutsu Kaisen" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Jujutsu Kaisen</h3>
-                                        <p class="genres">Action Shonen Fantasy Adventure Magic Monster</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 9 (Spirit Chronical) -->
-                            <div class="anime-card" data-genre="all-anime action adventure drama romance isekai fantasy harem" data-title="Jujutsu Kaisen">
-                                <a href="">
-                                    <img src="spirit.jpg" alt="Spirit Chronicles" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Spirit Chronicles</h3>
-                                        <p class="genres">Action Adventure Drama Romance Isekai Fantasy Harem </p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 10 (Ice Blade) -->
-                            <div class="anime-card" data-genre="all-anime action  fantasy school magic" data-title="Jujutsu Kaisen">
-                                <a href="">
-                                    <img src="ice blade.jpg" alt="Ice Blade Sorrcerer Shall Rule the World" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Ice Blade Sorrcerer Shall Rule the World</h3>
-                                        <p class="genres"> Action Fantasy School Magic</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-                            <!-- card # 11 (Sakamoto Days) -->
-                            <div class="anime-card" data-genre="all-anime action  comedy shonen" data-title="Sakamoto Days">
-                                <a href="">
-                                    <img src="1sakamoto.jpg" alt="sakamoto days" loading="lazy">
-                                    <div class="card-info">
-                                        <h3>Sakamoto Days</h3>
-                                        <p class="genres"> Action Comedy Shonen</p>
-                                    </div>
-                                </a>
-                                <button class="bookmark-btn"><i class="far fa-bookmark  bookmark-icon"></i></button>
-                            </div>
-
-
-
-
-                        </div>
-                    </div>
-                </div>
-        </div>
-
+    <div class="hero-buttons">
+      <a class="btn primary" href="">Watch now</a>
+      <a class="btn secondary"  href="./indexmain.html">Explore Anime</a>
     </div>
-
-    <script src="script.js"></script>
-
-
+  </div>
+</section>
 
 
-
+    <script src="landing.js"></script>
 </body>
 
 </html>
